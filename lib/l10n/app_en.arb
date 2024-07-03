@@ -1,0 +1,43 @@
+{
+  "@@locale": "en",
+  "language": "English",
+  "@language": {
+    "description": "The Current language"
+  },
+  "changeLang": "Change Language to Arabic",
+  "@hello": {
+    "description": "This message is for the button to let the user change the language to arabic"
+  },
+  "allProducts": "All Products",
+  "@allProducts": {
+    "description": "Click here to see all products"
+  },
+  "productDetail": "Product Detail",
+  "@productDetail": {
+    "description": "App bar for product detail"
+  },
+  "title": "Title :",
+  "@tite": {
+    "description": "The title of the product"
+  },
+  "rating": "Rating :",
+  "@rating": {
+    "description": "The rating of the product"
+  },
+  "count": "Rating Count :",
+  "@coubnt": {
+    "description": "Count of people who rated the product"
+  },
+  "price": "Price :",
+  "@price": {
+    "description": "The price of the product"
+  },
+  "category": "Category :",
+  "@category": {
+    "description": "The category of the product"
+  },
+  "productDescription": "Description :",
+  "@productDescription": {
+    "description": "The description of the product"
+  }
+}
