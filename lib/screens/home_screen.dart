@@ -25,11 +25,24 @@ class HomeScreen extends StatelessWidget {
             if (categoryProvider.isLoadingCategory) {
               return Drawer(
                 child: SafeArea(
-                    child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    return const DrawerShimmerWidget();
-                  },
-                  itemCount: 5,
+                    child: Column(
+                  children: [
+                    ListView.builder(
+                      itemBuilder: (context, index) {
+                        return const DrawerShimmerWidget();
+                      },
+                      itemCount: 5,
+                    ),
+                    const Divider(),
+                    Text(
+                      textAlign: TextAlign.center,
+                      AppLocalizations.of(context)!.changeLang,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const LanguageSwitch(),
+                  ],
                 )),
               );
             } else {
@@ -68,21 +81,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Selector<LanguageProvider, String>(
-                        selector: (context, language) => language.getLangCode,
-                        builder: (context, value, child) {
-                          bool isSelected = value == 'ar';
-                          return Switch(
-                            value: isSelected,
-                            onChanged: (value) {
-                              String newLanguageCode = value ? 'ar' : 'en';
-                              context
-                                  .read<LanguageProvider>()
-                                  .changeLangCode(newLangCode: newLanguageCode);
-                            },
-                          );
-                        },
-                      ),
+                      const LanguageSwitch(),
                     ],
                   ),
                 ),
@@ -124,6 +123,31 @@ class HomeScreen extends StatelessWidget {
           }
         },
       ),
+    );
+  }
+}
+
+class LanguageSwitch extends StatelessWidget {
+  const LanguageSwitch({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Selector<LanguageProvider, String>(
+      selector: (context, language) => language.getLangCode,
+      builder: (context, value, child) {
+        bool isSelected = value == 'ar';
+        return Switch(
+          value: isSelected,
+          onChanged: (value) {
+            String newLanguageCode = value ? 'ar' : 'en';
+            context
+                .read<LanguageProvider>()
+                .changeLangCode(newLangCode: newLanguageCode);
+          },
+        );
+      },
     );
   }
 }
